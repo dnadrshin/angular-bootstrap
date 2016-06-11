@@ -47,7 +47,7 @@ var path = {
     },
     watch: {
         html: 'src/**/*.html',
-        js: 'js/**/*.js',
+        js: 'src/js/**/*.js',
         style: 'src/sass/**/*.*',
         stylecss: 'css/**/*.css'
     },
@@ -55,15 +55,15 @@ var path = {
 };
 
 gulp.task('minify-css', function() {
-    return gulp.src('css/*.css')
+    return gulp.src(path.src.style)
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('build/css'));
 });
 
 
 gulp.task('uglify', function() {
-    gulp.src('js/*.js')
-        //.pipe(uglify())
+    gulp.src(path.src.js)
+        .pipe(uglify())
         .pipe(gulp.dest('build/js'))
 });
 
